@@ -6,59 +6,59 @@
   <title>FMP — FUTURE MINERALS PIONEERS | Workshop Registration</title>
   <style>
     :root{--bg:#0b0b0c;--card:#121214;--muted:#b8b8c2;--text:#fff;--line:#232329;--btn:#ffffff;--btnText:#000}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#070708, #0b0b0c);color:var(--text)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#070708,#0b0b0c);color:var(--text)}
     .wrap{max-width:560px;margin:0 auto;padding:18px}
     .brand{font-weight:800;letter-spacing:.4px;font-size:14px;color:var(--muted)}
     h1{margin:6px 0 8px;font-size:22px}
     p{margin:0 0 14px;color:var(--muted);line-height:1.4}
     .card{background:rgba(18,18,20,.92);border:1px solid var(--line);border-radius:16px;padding:14px}
     .grid{display:grid;gap:10px}
-    label{font-size:12px;color:var(--muted)}
+    label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
     input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0f0f11;color:var(--text);font-size:15px}
-    button{padding:12px 14px;border-radius:12px;border:none;background:var(--btn);color:var(--btnText);font-weight:800;font-size:15px;cursor:pointer}
-    button:disabled{opacity:.55;cursor:not-allowed}
+    button{width:100%;padding:12px 14px;border-radius:12px;border:none;background:var(--btn);color:var(--btnText);font-weight:800;font-size:15px;cursor:pointer}
     .row{display:flex;gap:10px}
-    .row > div{flex:1}
-    .status{margin-top:10px;font-size:13px;color:#ffd7d7}
-    .ok{color:#c9ffcf}
-    .hint{font-size:12px;color:var(--muted);margin-top:10px}
+    .row>div{flex:1;min-width:0}
+    .hint{font-size:12px;color:var(--muted);margin-top:8px}
     .footer{margin-top:12px;font-size:12px;color:var(--muted)}
     a{color:#cfd3ff}
-    .pill{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--muted);margin-top:10px}
+    @media (max-width:520px){
+      .row{flex-direction:column}
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="brand">FMP — FUTURE MINERALS PIONEERS</div>
     <h1>Workshop Competitor Registration</h1>
-    <p id="intro">Fill your details and submit. If workshop sessions can’t load yet, you can still submit and we’ll confirm your session later.</p>
+    <p>Fill your details and submit. (This version is offline-safe: the button always takes you to the Thank You page.)</p>
 
-    <div class="card" id="formCard">
+    <form class="card" action="./thankyou.html" method="GET">
       <div class="grid">
         <div>
-          <label>Full Name *</label>
-          <input id="full_name" placeholder="Your full name" />
+          <label for="full_name">Full Name *</label>
+          <input id="full_name" name="full_name" placeholder="Your full name" required />
         </div>
 
         <div class="row">
           <div>
-            <label>Email *</label>
-            <input id="email" placeholder="name@email.com" />
+            <label for="email">Email *</label>
+            <input id="email" name="email" placeholder="name@email.com" type="email" required />
           </div>
           <div>
-            <label>Phone (with country code) *</label>
-            <input id="phone" placeholder="+966..." />
+            <label for="phone">Phone (with country code) *</label>
+            <input id="phone" name="phone" placeholder="+966..." required />
           </div>
         </div>
 
         <div class="row">
           <div>
-            <label>Team Name *</label>
-            <input id="team_name" placeholder="Team name" />
+            <label for="team_name">Team Name *</label>
+            <input id="team_name" name="team_name" placeholder="Team name" required />
           </div>
           <div>
-            <label>Track Name *</label>
-            <select id="track_name">
+            <label for="track_name">Track Name *</label>
+            <select id="track_name" name="track_name" required>
               <option value="">Select track</option>
               <option value="Sastianliy track">Sastianliy track</option>
               <option value="Safety and security track">Safety and security track</option>
@@ -68,142 +68,54 @@
         </div>
 
         <div>
-          <label>Workshop Session (optional for now)</label>
-          <select id="session_id">
-            <option value="">Loading sessions…</option>
+          <label for="workshop_session">Workshop Session (optional for now)</label>
+          <select id="workshop_session" name="workshop_session">
+            <option value="">Not selected</option>
+
+            <optgroup label="Day 1">
+              <option>Workshop 1 — Day 1 — 10:00–11:00 (20 left)</option>
+              <option>Workshop 1 — Day 1 — 12:00–13:00 (20 left)</option>
+              <option>Workshop 1 — Day 1 — 14:00–15:00 (20 left)</option>
+              <option>Workshop 1 — Day 1 — 16:00–17:00 (20 left)</option>
+
+              <option>Workshop 2 — Day 1 — 10:00–11:00 (20 left)</option>
+              <option>Workshop 2 — Day 1 — 12:00–13:00 (20 left)</option>
+              <option>Workshop 2 — Day 1 — 14:00–15:00 (20 left)</option>
+              <option>Workshop 2 — Day 1 — 16:00–17:00 (20 left)</option>
+
+              <option>Workshop 3 — Day 1 — 10:00–11:00 (20 left)</option>
+              <option>Workshop 3 — Day 1 — 12:00–13:00 (20 left)</option>
+              <option>Workshop 3 — Day 1 — 14:00–15:00 (20 left)</option>
+              <option>Workshop 3 — Day 1 — 16:00–17:00 (20 left)</option>
+            </optgroup>
+
+            <optgroup label="Day 2">
+              <option>Workshop 1 — Day 2 — 10:00–11:00 (20 left)</option>
+              <option>Workshop 1 — Day 2 — 12:00–13:00 (20 left)</option>
+              <option>Workshop 1 — Day 2 — 14:00–15:00 (20 left)</option>
+              <option>Workshop 1 — Day 2 — 16:00–17:00 (20 left)</option>
+
+              <option>Workshop 2 — Day 2 — 10:00–11:00 (20 left)</option>
+              <option>Workshop 2 — Day 2 — 12:00–13:00 (20 left)</option>
+              <option>Workshop 2 — Day 2 — 14:00–15:00 (20 left)</option>
+              <option>Workshop 2 — Day 2 — 16:00–17:00 (20 left)</option>
+
+              <option>Workshop 3 — Day 2 — 10:00–11:00 (20 left)</option>
+              <option>Workshop 3 — Day 2 — 12:00–13:00 (20 left)</option>
+              <option>Workshop 3 — Day 2 — 14:00–15:00 (20 left)</option>
+              <option>Workshop 3 — Day 2 — 16:00–17:00 (20 left)</option>
+            </optgroup>
           </select>
           <div class="hint">Format: Workshop — Day — Time (spots left) or (FULL)</div>
-          <div id="modePill" class="pill" style="display:none;"></div>
         </div>
 
-        <button id="submit_btn" type="button">Submit Registration</button>
-        <div id="status" class="status"></div>
+        <button type="submit">Submit Registration</button>
       </div>
-    </div>
+    </form>
 
     <div class="footer">
       Admin? Go to <a href="./admin.html">admin.html</a>
     </div>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    // ====== OPTIONAL: paste your Supabase keys here for live sessions ======
-    const SUPABASE_URL = "PASTE_YOUR_SUPABASE_URL_HERE";
-    const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_ANON_KEY_HERE";
-    // =====================================================
-
-    const $ = (id) => document.getElementById(id);
-    const statusEl = $("status");
-    const sessionSelect = $("session_id");
-    const modePill = $("modePill");
-
-    // If keys are not set, we auto-run Demo sessions so dropdown never stays "Loading..."
-    const keysMissing = SUPABASE_URL.includes("PASTE_") || SUPABASE_ANON_KEY.includes("PASTE_");
-    const supabase = keysMissing ? null : window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    function setStatus(msg, ok=false){
-      statusEl.textContent = msg || "";
-      statusEl.className = ok ? "status ok" : "status";
-    }
-
-    function loadDemoSessions(reasonText){
-      modePill.style.display = "inline-block";
-      modePill.textContent = reasonText || "Demo sessions (Supabase not connected yet)";
-      const days = ["Day 1","Day 2"];
-      const workshops = ["Workshop 1","Workshop 2","Workshop 3"];
-      const times = ["10:00–11:00","12:00–13:00","14:00–15:00","16:00–17:00"];
-      sessionSelect.innerHTML = `<option value="">Select session (optional)</option>`;
-      let i=1;
-      for(const d of days){
-        for(const w of workshops){
-          for(const t of times){
-            const opt = document.createElement("option");
-            opt.value = `demo-${i++}`;
-            opt.textContent = `${w} — ${d} — ${t} (20 left)`;
-            sessionSelect.appendChild(opt);
-          }
-        }
-      }
-    }
-
-    async function loadSessions(){
-      setStatus("");
-      sessionSelect.innerHTML = `<option value="">Loading sessions…</option>`;
-
-      if(keysMissing){
-        loadDemoSessions("Demo sessions (paste Supabase keys for live spots)");
-        return;
-      }
-
-      const { data, error } = await supabase
-        .from("sessions_with_spots")
-        .select("*")
-        .order("day", { ascending: true })
-        .order("start_time", { ascending: true })
-        .order("workshop_name", { ascending: true });
-
-      if(error){
-        loadDemoSessions("Couldn’t load live sessions — using demo sessions for now");
-        setStatus("Live sessions failed to load (keys/view/RLS). You can still submit.", false);
-        return;
-      }
-
-      modePill.style.display = "none";
-      sessionSelect.innerHTML = `<option value="">Select session (optional)</option>`;
-      data.forEach(s => {
-        const start = String(s.start_time).slice(0,5);
-        const end = String(s.end_time).slice(0,5);
-        const suffix = (s.spots_left > 0) ? `(${s.spots_left} left)` : `(FULL)`;
-        const opt = document.createElement("option");
-        opt.value = s.id;
-        opt.textContent = `${s.workshop_name} — ${s.day} — ${start}–${end} ${suffix}`;
-        opt.disabled = (s.spots_left <= 0); // show FULL but block
-        sessionSelect.appendChild(opt);
-      });
-    }
-
-    function isLikelyEmail(v){
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-    }
-
-    function submit(){
-      setStatus("");
-
-      const full_name = $("full_name").value.trim();
-      const email = $("email").value.trim();
-      const phone = $("phone").value.trim();
-      const team_name = $("team_name").value.trim();
-      const track_name = $("track_name").value;
-      const session_text = sessionSelect.options[sessionSelect.selectedIndex]?.textContent || "";
-      const session_value = sessionSelect.value || "";
-
-      // REQUIRED fields ONLY (workshop session NOT required)
-      if(!full_name || !email || !phone || !team_name || !track_name){
-        setStatus("Please fill all required fields.");
-        return;
-      }
-      if(!isLikelyEmail(email)){
-        setStatus("Please enter a valid email address.");
-        return;
-      }
-
-      // Save a local receipt so thankyou.html can show it
-      const receipt = {
-        timestamp: new Date().toISOString(),
-        full_name, email, phone, team_name, track_name,
-        workshop_session: session_text && session_value ? session_text : "Not selected"
-      };
-      try{
-        localStorage.setItem("fmp_last_submission", JSON.stringify(receipt));
-      } catch(e){ /* ignore */ }
-
-      // Always redirect to the Thank You page
-      window.location.href = "./thankyou.html";
-    }
-
-    $("submit_btn").addEventListener("click", submit);
-    loadSessions();
-  </script>
 </body>
 </html>
