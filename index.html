@@ -17,25 +17,22 @@
     label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
     input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0f0f11;color:var(--text);font-size:15px}
     button{width:100%;padding:12px 14px;border-radius:12px;border:none;background:var(--btn);color:var(--btnText);font-weight:800;font-size:15px;cursor:pointer}
+    button:disabled{opacity:.55;cursor:not-allowed}
     .row{display:flex;gap:10px}
     .row>div{flex:1;min-width:0}
     .hint{font-size:12px;color:var(--muted);margin-top:8px}
     .footer{margin-top:12px;font-size:12px;color:var(--muted)}
     a{color:#cfd3ff}
-    .tabs{display:flex;gap:10px;margin:8px 0 0}
-    .tab{flex:1;text-align:center;padding:10px 10px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--muted);font-weight:800;font-size:13px}
-    .tab.active{background:var(--chip);color:var(--text)}
-    .panel{display:none;margin-top:10px}
-    .panel.active{display:block}
-    .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .chip{padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--chip);color:var(--text);font-weight:800;font-size:14px;cursor:pointer;text-align:center}
-    .chip[aria-pressed="true"]{outline:2px solid #cfd3ff}
-    .topline{display:flex;justify-content:space-between;align-items:center;margin-top:4px}
-    .badge{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:6px 10px;border-radius:999px;max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+    .spotsCard{border:1px dashed var(--line);border-radius:14px;padding:12px;background:rgba(15,15,17,.6)}
+    .spotsTop{display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .pill{padding:6px 10px;border-radius:999px;border:1px solid var(--line);font-size:12px;color:var(--muted)}
+    .pill.ok{color:#c9ffcf}
+    .pill.full{color:#ffd7d7}
+    .spotsBig{font-size:22px;font-weight:900;margin-top:8px}
+    .muted{color:var(--muted)}
     @media (max-width:520px){
       .row{flex-direction:column}
-      .chips{grid-template-columns:1fr}
-      .badge{max-width:70%}
     }
   </style>
 </head>
@@ -43,8 +40,9 @@
   <div class="wrap">
     <div class="brand">FMP — FUTURE MINERALS PIONEERS</div>
     <h1>Workshop Competitor Registration</h1>
-    <p>Step 1: choose a workshop. Step 2: choose a time slot. Then submit.</p>
+    <p>Pick a workshop, then pick a time. You’ll see the spots left before you submit.</p>
 
+    <!-- Pure HTML submit always works -->
     <form class="card" action="./thankyou.html" method="GET" id="regForm">
       <div class="grid">
         <div>
@@ -79,72 +77,40 @@
           </div>
         </div>
 
-        <div>
-          <div class="topline">
-            <label style="margin:0;">Workshop Session</label>
-            <span class="badge" id="pickedBadge">Not selected</span>
+        <!-- NEW: 2 dropdowns -->
+        <div class="row">
+          <div>
+            <label for="workshop_name">Workshop *</label>
+            <select id="workshop_name" name="workshop_name" required>
+              <option value="">Select workshop</option>
+              <option value="Workshop 1">Workshop 1</option>
+              <option value="Workshop 2">Workshop 2</option>
+              <option value="Workshop 3">Workshop 3</option>
+            </select>
           </div>
-
-          <div class="tabs" role="tablist" aria-label="Workshop selection steps">
-            <button class="tab active" type="button" id="tabWorkshop" role="tab" aria-selected="true">1) Workshop</button>
-            <button class="tab" type="button" id="tabTime" role="tab" aria-selected="false">2) Time</button>
-          </div>
-
-          <div class="panel active" id="panelWorkshop" role="tabpanel">
-            <div class="chips" id="workshopChips"></div>
-
-            <div style="margin-top:12px;">
-              <label for="workshop_session_fallback">If buttons don’t work on your device, use this dropdown:</label>
-              <select id="workshop_session_fallback" name="workshop_session_fallback">
-                <option value="">Not selected</option>
-                <optgroup label="Workshop 1">
-                  <option>Workshop 1 — Day 1 — 10:00–11:00 (20 left)</option>
-                  <option>Workshop 1 — Day 1 — 12:00–13:00 (20 left)</option>
-                  <option>Workshop 1 — Day 1 — 14:00–15:00 (20 left)</option>
-                  <option>Workshop 1 — Day 1 — 16:00–17:00 (20 left)</option>
-                  <option>Workshop 1 — Day 2 — 10:00–11:00 (20 left)</option>
-                  <option>Workshop 1 — Day 2 — 12:00–13:00 (20 left)</option>
-                  <option>Workshop 1 — Day 2 — 14:00–15:00 (20 left)</option>
-                  <option>Workshop 1 — Day 2 — 16:00–17:00 (20 left)</option>
-                </optgroup>
-                <optgroup label="Workshop 2">
-                  <option>Workshop 2 — Day 1 — 10:00–11:00 (20 left)</option>
-                  <option>Workshop 2 — Day 1 — 12:00–13:00 (20 left)</option>
-                  <option>Workshop 2 — Day 1 — 14:00–15:00 (20 left)</option>
-                  <option>Workshop 2 — Day 1 — 16:00–17:00 (20 left)</option>
-                  <option>Workshop 2 — Day 2 — 10:00–11:00 (20 left)</option>
-                  <option>Workshop 2 — Day 2 — 12:00–13:00 (20 left)</option>
-                  <option>Workshop 2 — Day 2 — 14:00–15:00 (20 left)</option>
-                  <option>Workshop 2 — Day 2 — 16:00–17:00 (20 left)</option>
-                </optgroup>
-                <optgroup label="Workshop 3">
-                  <option>Workshop 3 — Day 1 — 10:00–11:00 (20 left)</option>
-                  <option>Workshop 3 — Day 1 — 12:00–13:00 (20 left)</option>
-                  <option>Workshop 3 — Day 1 — 14:00–15:00 (20 left)</option>
-                  <option>Workshop 3 — Day 1 — 16:00–17:00 (20 left)</option>
-                  <option>Workshop 3 — Day 2 — 10:00–11:00 (20 left)</option>
-                  <option>Workshop 3 — Day 2 — 12:00–13:00 (20 left)</option>
-                  <option>Workshop 3 — Day 2 — 14:00–15:00 (20 left)</option>
-                  <option>Workshop 3 — Day 2 — 16:00–17:00 (20 left)</option>
-                </optgroup>
-              </select>
-              <div class="hint">Fallback submits as “workshop_session_fallback”.</div>
-            </div>
-          </div>
-
-          <div class="panel" id="panelTime" role="tabpanel">
-            <label for="workshop_time">Select Time Slot *</label>
+          <div>
+            <label for="workshop_time">Time Slot *</label>
             <select id="workshop_time" name="workshop_time" required>
               <option value="">Pick a workshop first</option>
             </select>
-            <div class="hint">Full sessions show as FULL and are blocked.</div>
           </div>
-
-          <input type="hidden" id="workshop_session" name="workshop_session" value="" />
-          <div class="hint">Submitted combined field: <b>workshop_session</b></div>
         </div>
 
-        <button type="submit">Submit Registration</button>
+        <!-- Spots left preview -->
+        <div class="spotsCard" id="spotsCard" aria-live="polite">
+          <div class="spotsTop">
+            <div class="muted" style="font-weight:800;">Availability</div>
+            <div class="pill" id="pill">Select workshop + time</div>
+          </div>
+          <div class="spotsBig" id="spotsBig">—</div>
+          <div class="hint" id="spotsHint">Choose a time slot to see spots left. Full sessions are disabled.</div>
+        </div>
+
+        <!-- Combined session (single export field) -->
+        <input type="hidden" id="workshop_session" name="workshop_session" value="" />
+        <div class="hint">Submitted as: <b>workshop_session</b> (Workshop — Day — Time — Spots)</div>
+
+        <button type="submit" id="submitBtn">Submit Registration</button>
       </div>
     </form>
 
@@ -154,118 +120,146 @@
   </div>
 
   <script>
-    // Offline-safe session data
+    // Offline-safe demo data.
+    // Later: replace this with live counts from your backend.
     const CAP = 20;
-    const workshops = ["Workshop 1","Workshop 2","Workshop 3"];
-    const days = ["Day 1","Day 2"];
-    const times = [
-      { start:"10:00", end:"11:00" },
-      { start:"12:00", end:"13:00" },
-      { start:"14:00", end:"15:00" },
-      { start:"16:00", end:"17:00" }
-    ];
 
-    const sessions = [];
-    for (const w of workshops){
-      for (const d of days){
-        for (const t of times){
-          sessions.push({
-            workshop: w,
-            day: d,
-            label: `${d} — ${t.start}–${t.end} (${CAP} left)`,
-            value: `${w} — ${d} — ${t.start}–${t.end} (${CAP} left)`,
-            full: false
-          });
-        }
-      }
+    // Each record: workshop, day, start, end, registered
+    // You can edit "registered" values to simulate spots left / FULL.
+    const sessions = [
+      // Workshop 1 Day 1
+      {w:"Workshop 1", d:"Day 1", s:"10:00", e:"11:00", reg: 3},
+      {w:"Workshop 1", d:"Day 1", s:"12:00", e:"13:00", reg: 20}, // FULL example
+      {w:"Workshop 1", d:"Day 1", s:"14:00", e:"15:00", reg: 9},
+      {w:"Workshop 1", d:"Day 1", s:"16:00", e:"17:00", reg: 0},
+
+      // Workshop 2 Day 1
+      {w:"Workshop 2", d:"Day 1", s:"10:00", e:"11:00", reg: 7},
+      {w:"Workshop 2", d:"Day 1", s:"12:00", e:"13:00", reg: 2},
+      {w:"Workshop 2", d:"Day 1", s:"14:00", e:"15:00", reg: 20}, // FULL example
+      {w:"Workshop 2", d:"Day 1", s:"16:00", e:"17:00", reg: 5},
+
+      // Workshop 3 Day 1
+      {w:"Workshop 3", d:"Day 1", s:"10:00", e:"11:00", reg: 1},
+      {w:"Workshop 3", d:"Day 1", s:"12:00", e:"13:00", reg: 4},
+      {w:"Workshop 3", d:"Day 1", s:"14:00", e:"15:00", reg: 6},
+      {w:"Workshop 3", d:"Day 1", s:"16:00", e:"17:00", reg: 8},
+
+      // Day 2 (all empty by default)
+      {w:"Workshop 1", d:"Day 2", s:"10:00", e:"11:00", reg: 0},
+      {w:"Workshop 1", d:"Day 2", s:"12:00", e:"13:00", reg: 0},
+      {w:"Workshop 1", d:"Day 2", s:"14:00", e:"15:00", reg: 0},
+      {w:"Workshop 1", d:"Day 2", s:"16:00", e:"17:00", reg: 0},
+
+      {w:"Workshop 2", d:"Day 2", s:"10:00", e:"11:00", reg: 0},
+      {w:"Workshop 2", d:"Day 2", s:"12:00", e:"13:00", reg: 0},
+      {w:"Workshop 2", d:"Day 2", s:"14:00", e:"15:00", reg: 0},
+      {w:"Workshop 2", d:"Day 2", s:"16:00", e:"17:00", reg: 0},
+
+      {w:"Workshop 3", d:"Day 2", s:"10:00", e:"11:00", reg: 0},
+      {w:"Workshop 3", d:"Day 2", s:"12:00", e:"13:00", reg: 0},
+      {w:"Workshop 3", d:"Day 2", s:"14:00", e:"15:00", reg: 0},
+      {w:"Workshop 3", d:"Day 2", s:"16:00", e:"17:00", reg: 0},
+    ].map(x => ({
+      ...x,
+      left: Math.max(0, CAP - x.reg),
+      value: `${x.w} — ${x.d} — ${x.s}–${x.e}`,
+      labelBase: `${x.d} — ${x.s}–${x.e}`
+    }));
+
+    const workshopSel = document.getElementById("workshop_name");
+    const timeSel = document.getElementById("workshop_time");
+    const pill = document.getElementById("pill");
+    const spotsBig = document.getElementById("spotsBig");
+    const spotsHint = document.getElementById("spotsHint");
+    const combined = document.getElementById("workshop_session");
+    const submitBtn = document.getElementById("submitBtn");
+
+    function resetTime(){
+      timeSel.innerHTML = '<option value="">Pick a workshop first</option>';
+      combined.value = "";
+      pill.className = "pill";
+      pill.textContent = "Select workshop + time";
+      spotsBig.textContent = "—";
+      spotsHint.textContent = "Choose a time slot to see spots left. Full sessions are disabled.";
     }
 
-    const tabWorkshop = document.getElementById("tabWorkshop");
-    const tabTime = document.getElementById("tabTime");
-    const panelWorkshop = document.getElementById("panelWorkshop");
-    const panelTime = document.getElementById("panelTime");
-    const chipsWrap = document.getElementById("workshopChips");
-    const timeSelect = document.getElementById("workshop_time");
-    const hiddenCombined = document.getElementById("workshop_session");
-    const pickedBadge = document.getElementById("pickedBadge");
+    function populateTimes(workshopName){
+      timeSel.innerHTML = '<option value="">Select time slot</option>';
+      const list = sessions.filter(s => s.w === workshopName);
 
-    let selectedWorkshop = "";
-    let selectedTimeValue = "";
+      // Group by day visually in a single select (using optgroup)
+      const byDay = {};
+      list.forEach(s => (byDay[s.d] = byDay[s.d] || []).push(s));
 
-    function setTab(which){
-      const isWorkshop = which === "workshop";
-      tabWorkshop.classList.toggle("active", isWorkshop);
-      tabTime.classList.toggle("active", !isWorkshop);
-      tabWorkshop.setAttribute("aria-selected", isWorkshop ? "true":"false");
-      tabTime.setAttribute("aria-selected", !isWorkshop ? "true":"false");
-      panelWorkshop.classList.toggle("active", isWorkshop);
-      panelTime.classList.toggle("active", !isWorkshop);
-    }
-    tabWorkshop.addEventListener("click", () => setTab("workshop"));
-    tabTime.addEventListener("click", () => setTab("time"));
-
-    function updateBadge(){
-      if(!selectedWorkshop){
-        pickedBadge.textContent = "Not selected";
-        return;
-      }
-      if(!selectedTimeValue){
-        pickedBadge.textContent = selectedWorkshop + " — pick time";
-        return;
-      }
-      pickedBadge.textContent = selectedTimeValue;
-    }
-
-    function populateTimes(){
-      timeSelect.innerHTML = "";
-      const opt0 = document.createElement("option");
-      opt0.value = "";
-      opt0.textContent = "Select time slot";
-      timeSelect.appendChild(opt0);
-
-      const list = sessions.filter(s => s.workshop === selectedWorkshop);
-      list.forEach(s => {
-        const opt = document.createElement("option");
-        opt.value = s.value;
-        opt.textContent = s.label + (s.full ? " (FULL)" : "");
-        opt.disabled = !!s.full;
-        timeSelect.appendChild(opt);
-      });
-
-      selectedTimeValue = "";
-      hiddenCombined.value = "";
-      updateBadge();
-    }
-
-    function renderChips(){
-      chipsWrap.innerHTML = "";
-      workshops.forEach(w => {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.className = "chip";
-        b.textContent = w;
-        b.setAttribute("aria-pressed", "false");
-        b.addEventListener("click", () => {
-          selectedWorkshop = w;
-          [...chipsWrap.querySelectorAll(".chip")].forEach(c => c.setAttribute("aria-pressed","false"));
-          b.setAttribute("aria-pressed","true");
-          populateTimes();
-          setTab("time");
-          updateBadge();
+      Object.keys(byDay).forEach(day => {
+        const og = document.createElement("optgroup");
+        og.label = day;
+        byDay[day].forEach(s => {
+          const opt = document.createElement("option");
+          const suffix = s.left > 0 ? `(${s.left} left)` : `(FULL)`;
+          opt.value = s.value;
+          opt.textContent = `${s.labelBase} ${suffix}`;
+          opt.dataset.left = String(s.left);
+          opt.dataset.full = s.left <= 0 ? "1" : "0";
+          opt.dataset.day = s.d;
+          opt.dataset.start = s.s;
+          opt.dataset.end = s.e;
+          opt.disabled = (s.left <= 0); // show FULL but blocked
+          og.appendChild(opt);
         });
-        chipsWrap.appendChild(b);
+        timeSel.appendChild(og);
       });
+
+      // After changing workshop, time selection should reset
+      combined.value = "";
+      pill.className = "pill";
+      pill.textContent = "Pick a time slot";
+      spotsBig.textContent = "—";
+      spotsHint.textContent = "Select a time slot to see spots left.";
     }
 
-    timeSelect.addEventListener("change", (e) => {
-      selectedTimeValue = e.target.value || "";
-      hiddenCombined.value = selectedTimeValue;
-      updateBadge();
+    workshopSel.addEventListener("change", () => {
+      const w = workshopSel.value;
+      if(!w){ resetTime(); return; }
+      populateTimes(w);
     });
 
-    renderChips();
-    setTab("workshop");
-    updateBadge();
+    timeSel.addEventListener("change", () => {
+      const w = workshopSel.value;
+      const selectedOpt = timeSel.options[timeSel.selectedIndex];
+      const val = timeSel.value;
+
+      if(!w || !val){
+        pill.className = "pill";
+        pill.textContent = "Pick a time slot";
+        spotsBig.textContent = "—";
+        spotsHint.textContent = "Select a time slot to see spots left.";
+        combined.value = "";
+        return;
+      }
+
+      const left = parseInt(selectedOpt.dataset.left || "0", 10);
+      const isFull = left <= 0;
+
+      // Compose combined export field
+      const day = selectedOpt.dataset.day || "";
+      const start = selectedOpt.dataset.start || "";
+      const end = selectedOpt.dataset.end || "";
+      const suffix = isFull ? "FULL" : `${left} left`;
+      combined.value = `${w} — ${day} — ${start}–${end} (${suffix})`;
+
+      // UI
+      pill.className = "pill " + (isFull ? "full" : "ok");
+      pill.textContent = isFull ? "FULL" : "AVAILABLE";
+      spotsBig.textContent = isFull ? "0 spots left" : `${left} spots left`;
+      spotsHint.textContent = isFull
+        ? "This time slot is full. Please choose a different time or workshop."
+        : "You’re good — you can submit now.";
+    });
+
+    // Initial
+    resetTime();
   </script>
 </body>
 </html>
