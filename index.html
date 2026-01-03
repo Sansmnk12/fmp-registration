@@ -160,7 +160,24 @@
       {w:"Workshop 3", d:"Day 2", s:"12:00", e:"13:00", reg: 0},
       {w:"Workshop 3", d:"Day 2", s:"14:00", e:"15:00", reg: 0},
       {w:"Workshop 3", d:"Day 2", s:"16:00", e:"17:00", reg: 0},
-    ].map(x => ({
+
+      // Day 3 (same timing)
+      {w:"Workshop 1", d:"Day 3", s:"10:00", e:"11:00", reg: 0},
+      {w:"Workshop 1", d:"Day 3", s:"12:00", e:"13:00", reg: 0},
+      {w:"Workshop 1", d:"Day 3", s:"14:00", e:"15:00", reg: 0},
+      {w:"Workshop 1", d:"Day 3", s:"16:00", e:"17:00", reg: 0},
+
+      {w:"Workshop 2", d:"Day 3", s:"10:00", e:"11:00", reg: 0},
+      {w:"Workshop 2", d:"Day 3", s:"12:00", e:"13:00", reg: 0},
+      {w:"Workshop 2", d:"Day 3", s:"14:00", e:"15:00", reg: 0},
+      {w:"Workshop 2", d:"Day 3", s:"16:00", e:"17:00", reg: 0},
+
+      {w:"Workshop 3", d:"Day 3", s:"10:00", e:"11:00", reg: 0},
+      {w:"Workshop 3", d:"Day 3", s:"12:00", e:"13:00", reg: 0},
+      {w:"Workshop 3", d:"Day 3", s:"14:00", e:"15:00", reg: 0},
+      {w:"Workshop 3", d:"Day 3", s:"16:00", e:"17:00", reg: 0},
+
+].map(x => ({
       ...x,
       left: Math.max(0, CAP - x.reg),
       value: `${x.w} — ${x.d} — ${x.s}–${x.e}`,
