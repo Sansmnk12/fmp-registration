@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FMP — Registration Submitted</title>
+  <style>
+    :root{--bg:#0b0b0c;--card:#121214;--muted:#b8b8c2;--text:#fff;--line:#232329;--btn:#ffffff;--btnText:#000}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#070708, #0b0b0c);color:var(--text)}
+    .wrap{max-width:560px;margin:0 auto;padding:18px}
+    .brand{font-weight:800;letter-spacing:.4px;font-size:14px;color:var(--muted)}
+    .card{background:rgba(18,18,20,.92);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:14px}
+    h1{margin:10px 0 8px;font-size:26px}
+    p{margin:0 0 12px;color:var(--muted);line-height:1.45}
+    .kvs{margin-top:12px;border-top:1px solid var(--line);padding-top:12px;display:grid;gap:10px}
+    .kv{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+    .kv b{color:#dfe1ff;font-weight:700}
+    button,a.btn{display:inline-block;margin-top:14px;padding:12px 14px;border-radius:12px;border:none;background:var(--btn);color:var(--btnText);font-weight:800;font-size:14px;cursor:pointer;text-decoration:none;text-align:center}
+    a.link{color:#cfd3ff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">FMP — FUTURE MINERALS PIONEERS</div>
+
+    <div class="card">
+      <h1>Thank you 🙌</h1>
+      <p>Your form has been submitted successfully.</p>
+      <p>Please arrive <b>10 minutes early</b> for your workshop session.</p>
+
+      <div class="kvs" id="receipt" style="display:none;">
+        <div class="kv"><span>Full Name</span><b id="r_name"></b></div>
+        <div class="kv"><span>Email</span><b id="r_email"></b></div>
+        <div class="kv"><span>Phone</span><b id="r_phone"></b></div>
+        <div class="kv"><span>Team</span><b id="r_team"></b></div>
+        <div class="kv"><span>Track</span><b id="r_track"></b></div>
+        <div class="kv"><span>Workshop Session</span><b id="r_session"></b></div>
+      </div>
+
+      <a class="btn" href="./index.html">Submit another registration</a>
+      <p style="margin-top:12px;font-size:12px;">
+        Admin list: <a class="link" href="./admin.html">admin.html</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    try{
+      const raw = localStorage.getItem("fmp_last_submission");
+      if(raw){
+        const r = JSON.parse(raw);
+        document.getElementById("receipt").style.display = "grid";
+        document.getElementById("r_name").textContent = r.full_name || "-";
+        document.getElementById("r_email").textContent = r.email || "-";
+        document.getElementById("r_phone").textContent = r.phone || "-";
+        document.getElementById("r_team").textContent = r.team_name || "-";
+        document.getElementById("r_track").textContent = r.track_name || "-";
+        document.getElementById("r_session").textContent = r.workshop_session || "-";
+      }
+    } catch(e){}
+  </script>
+</body>
+</html>
