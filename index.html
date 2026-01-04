@@ -2,281 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FMP — FUTURE MINERALS PIONEERS | Workshop Registration</title>
-  <style>
-    :root{--bg:#0b0b0c;--card:#121214;--muted:#b8b8c2;--text:#fff;--line:#232329;--btn:#ffffff;--btnText:#000;--chip:#0f0f11}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#070708,#0b0b0c);color:var(--text)}
-    .wrap{max-width:560px;margin:0 auto;padding:18px}
-    .brand{font-weight:800;letter-spacing:.4px;font-size:14px;color:var(--muted)}
-    h1{margin:6px 0 8px;font-size:22px}
-    p{margin:0 0 14px;color:var(--muted);line-height:1.4}
-    .card{background:rgba(18,18,20,.92);border:1px solid var(--line);border-radius:16px;padding:14px}
-    .grid{display:grid;gap:10px}
-    label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
-    input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0f0f11;color:var(--text);font-size:15px}
-    button{width:100%;padding:12px 14px;border-radius:12px;border:none;background:var(--btn);color:var(--btnText);font-weight:800;font-size:15px;cursor:pointer}
-    button:disabled{opacity:.55;cursor:not-allowed}
-    .row{display:flex;gap:10px}
-    .row>div{flex:1;min-width:0}
-    .hint{font-size:12px;color:var(--muted);margin-top:8px}
-    .footer{margin-top:12px;font-size:12px;color:var(--muted)}
-    a{color:#cfd3ff}
-
-    .spotsCard{border:1px dashed var(--line);border-radius:14px;padding:12px;background:rgba(15,15,17,.6)}
-    .spotsTop{display:flex;justify-content:space-between;gap:10px;align-items:center}
-    .pill{padding:6px 10px;border-radius:999px;border:1px solid var(--line);font-size:12px;color:var(--muted)}
-    .pill.ok{color:#c9ffcf}
-    .pill.full{color:#ffd7d7}
-    .spotsBig{font-size:22px;font-weight:900;margin-top:8px}
-    .muted{color:var(--muted)}
-    @media (max-width:520px){
-      .row{flex-direction:column}
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FMP — Workshop | الورشة Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="wrap">
-    <div class="brand">FMP — FUTURE MINERALS PIONEERS</div>
-    <h1>Workshop Competitor Registration</h1>
-    <p>Pick a workshop, then pick a time. You’ll see the spots left before you submit.</p>
-
-    <!-- Pure HTML submit always works -->
-    <form class="card" action="./thankyou.html" method="GET" id="regForm">
-      <div class="grid">
-        <div>
-          <label for="full_name">Full Name *</label>
-          <input id="full_name" name="full_name" placeholder="Your full name" required />
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="email">Email *</label>
-            <input id="email" name="email" placeholder="name@email.com" type="email" required />
-          </div>
-          <div>
-            <label for="phone">Phone (with country code) *</label>
-            <input id="phone" name="phone" placeholder="+966..." required />
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="team_name">Team Name *</label>
-            <input id="team_name" name="team_name" placeholder="Team name" required />
-          </div>
-          <div>
-            <label for="track_name">Track Name *</label>
-            <select id="track_name" name="track_name" required>
-              <option value="">Select track</option>
-              <option value="Sastianliy track">Sastianliy track</option>
-              <option value="Safety and security track">Safety and security track</option>
-              <option value="Technology track">Technology track</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- NEW: 2 dropdowns -->
-        <div class="row">
-          <div>
-            <label for="workshop_name">Workshop *</label>
-            <select id="workshop_name" name="workshop_name" required>
-              <option value="">Select workshop</option>
-              <option value="Workshop 1">Workshop 1</option>
-              <option value="Workshop 2">Workshop 2</option>
-              <option value="Workshop 3">Workshop 3</option>
-            </select>
-          </div>
-          <div>
-            <label for="workshop_time">Time Slot *</label>
-            <select id="workshop_time" name="workshop_time" required>
-              <option value="">Pick a workshop first</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Spots left preview -->
-        <div class="spotsCard" id="spotsCard" aria-live="polite">
-          <div class="spotsTop">
-            <div class="muted" style="font-weight:800;">Availability</div>
-            <div class="pill" id="pill">Select workshop + time</div>
-          </div>
-          <div class="spotsBig" id="spotsBig">—</div>
-          <div class="hint" id="spotsHint">Choose a time slot to see spots left. Full sessions are disabled.</div>
-        </div>
-
-        <!-- Combined session (single export field) -->
-        <input type="hidden" id="workshop_session" name="workshop_session" value="" />
-        <div class="hint">Submitted as: <b>workshop_session</b> (Workshop — Day — Time — Spots)</div>
-
-        <button type="submit" id="submitBtn">Submit Registration</button>
+  <main class="page">
+    <header class="header">
+      <div class="brand">
+        <div class="brand-top">FMP — FUTURE MINERALS PIONEERS</div>
+        <h1>Workshop | الورشة Competitor Registration | تسجيل منافسي الورش</h1>
+        <p class="sub">
+          Pick a workshop, then pick a time. You’ll see the spots left before you submit. | اختر ورشة ثم اختر الوقت — ستظهر المقاعد المتبقية قبل الإرسال.
+        </p>
       </div>
-    </form>
+    </header>
 
-    <div class="footer">
-      Admin? Go to <a href="./admin.html">admin.html</a>
-    </div>
-  </div>
+    <section class="card">
+      <!-- Logo goes here (center top) -->
+      <div class="logo-wrap">
+        <!-- Replace src with your logo file later -->
+        <img class="logo" src="./assets/logo-placeholder.svg" alt="FMP Logo" />
+      </div>
 
-  <script>
-    // Offline-safe demo data.
-    // Later: replace this with live counts from your backend.
-    const CAP = 20;
+      <form id="regForm" class="form" autocomplete="on">
+        <div class="grid">
+          <div class="field">
+            <label>Full Name | الاسم الكامل <span class="req">*</span></label>
+            <input name="full_name" placeholder="Your full name | اسمك الكامل" required />
+          </div>
 
-    // Each record: workshop, day, start, end, registered
-    // You can edit "registered" values to simulate spots left / FULL.
-    const sessions = [
-      // Workshop 1 Day 1
-      {w:"Workshop 1", d:"Day 1", s:"10:00", e:"11:00", reg: 3},
-      {w:"Workshop 1", d:"Day 1", s:"12:00", e:"13:00", reg: 20}, // FULL example
-      {w:"Workshop 1", d:"Day 1", s:"14:00", e:"15:00", reg: 9},
-      {w:"Workshop 1", d:"Day 1", s:"16:00", e:"17:00", reg: 0},
+          <div class="field">
+            <label>Email | البريد الإلكتروني <span class="req">*</span></label>
+            <input name="email" type="email" placeholder="name@email.com | بريدك@example.com" required />
+          </div>
 
-      // Workshop 2 Day 1
-      {w:"Workshop 2", d:"Day 1", s:"10:00", e:"11:00", reg: 7},
-      {w:"Workshop 2", d:"Day 1", s:"12:00", e:"13:00", reg: 2},
-      {w:"Workshop 2", d:"Day 1", s:"14:00", e:"15:00", reg: 20}, // FULL example
-      {w:"Workshop 2", d:"Day 1", s:"16:00", e:"17:00", reg: 5},
+          <div class="field">
+            <label>Phone (with country code) | رقم الجوال (مع رمز الدولة) <span class="req">*</span></label>
+            <input name="phone" placeholder="+966... | مثال: +9665xxxxxxx" required />
+          </div>
 
-      // Workshop 3 Day 1
-      {w:"Workshop 3", d:"Day 1", s:"10:00", e:"11:00", reg: 1},
-      {w:"Workshop 3", d:"Day 1", s:"12:00", e:"13:00", reg: 4},
-      {w:"Workshop 3", d:"Day 1", s:"14:00", e:"15:00", reg: 6},
-      {w:"Workshop 3", d:"Day 1", s:"16:00", e:"17:00", reg: 8},
+          <div class="field">
+            <label>Team Name | اسم الفريق <span class="req">*</span></label>
+            <input name="team_name" placeholder="Team name | اسم الفريق" required />
+          </div>
 
-      // Day 2 (all empty by default)
-      {w:"Workshop 1", d:"Day 2", s:"10:00", e:"11:00", reg: 0},
-      {w:"Workshop 1", d:"Day 2", s:"12:00", e:"13:00", reg: 0},
-      {w:"Workshop 1", d:"Day 2", s:"14:00", e:"15:00", reg: 0},
-      {w:"Workshop 1", d:"Day 2", s:"16:00", e:"17:00", reg: 0},
+          <div class="field">
+            <label>Track Name | المسار <span class="req">*</span></label>
+            <select name="track_name" required>
+              <option value="" selected disabled>Select track | اختر المسار</option>
+              <option>Exploration</option>
+              <option>Processing</option>
+              <option>Innovation</option>
+            </select>
+          </div>
 
-      {w:"Workshop 2", d:"Day 2", s:"10:00", e:"11:00", reg: 0},
-      {w:"Workshop 2", d:"Day 2", s:"12:00", e:"13:00", reg: 0},
-      {w:"Workshop 2", d:"Day 2", s:"14:00", e:"15:00", reg: 0},
-      {w:"Workshop 2", d:"Day 2", s:"16:00", e:"17:00", reg: 0},
+          <div class="field">
+            <label>Workshop | الورشة <span class="req">*</span></label>
+            <select id="workshopSelect" name="workshop_id" required>
+              <option value="" selected disabled>Select workshop | اختر الورشة</option>
+            </select>
+          </div>
 
-      {w:"Workshop 3", d:"Day 2", s:"10:00", e:"11:00", reg: 0},
-      {w:"Workshop 3", d:"Day 2", s:"12:00", e:"13:00", reg: 0},
-      {w:"Workshop 3", d:"Day 2", s:"14:00", e:"15:00", reg: 0},
-      {w:"Workshop 3", d:"Day 2", s:"16:00", e:"17:00", reg: 0},
+          <div class="field">
+            <label>Time Slot | الوقت <span class="req">*</span></label>
+            <select id="sessionSelect" name="session_id" required disabled>
+              <option value="" selected disabled>Pick a workshop first | اختر الورشة أولاً</option>
+            </select>
+          </div>
+        </div>
 
-      // Day 3 (same timing)
-      {w:"Workshop 1", d:"Day 3", s:"10:00", e:"11:00", reg: 0},
-      {w:"Workshop 1", d:"Day 3", s:"12:00", e:"13:00", reg: 0},
-      {w:"Workshop 1", d:"Day 3", s:"14:00", e:"15:00", reg: 0},
-      {w:"Workshop 1", d:"Day 3", s:"16:00", e:"17:00", reg: 0},
+        <div class="availability" aria-live="polite">
+          <div class="availability-head">
+            <h2>Availability | التوفر</h2>
+            <span id="statusPill" class="pill pill-muted">Select workshop | اختر الورشة + time</span>
+          </div>
 
-      {w:"Workshop 2", d:"Day 3", s:"10:00", e:"11:00", reg: 0},
-      {w:"Workshop 2", d:"Day 3", s:"12:00", e:"13:00", reg: 0},
-      {w:"Workshop 2", d:"Day 3", s:"14:00", e:"15:00", reg: 0},
-      {w:"Workshop 2", d:"Day 3", s:"16:00", e:"17:00", reg: 0},
+          <div class="availability-body">
+            <div class="big" id="spotsLeft">—</div>
+            <div class="small" id="spotsNote">Choose a time slot to see spots left. Full sessions are disabled. | اختر الوقت لعرض المقاعد المتبقية. الجلسات الممتلئة ستكون غير متاحة.</div>
+          </div>
+        </div>
 
-      {w:"Workshop 3", d:"Day 3", s:"10:00", e:"11:00", reg: 0},
-      {w:"Workshop 3", d:"Day 3", s:"12:00", e:"13:00", reg: 0},
-      {w:"Workshop 3", d:"Day 3", s:"14:00", e:"15:00", reg: 0},
-      {w:"Workshop 3", d:"Day 3", s:"16:00", e:"17:00", reg: 0},
+        <div class="submitted-as" id="submittedAs"></div>
 
-].map(x => ({
-      ...x,
-      left: Math.max(0, CAP - x.reg),
-      value: `${x.w} — ${x.d} — ${x.s}–${x.e}`,
-      labelBase: `${x.d} — ${x.s}–${x.e}`
-    }));
+        <button id="submitBtn" class="btn" type="submit" disabled>
+          Submit Registration | إرسال التسجيل
+        </button>
 
-    const workshopSel = document.getElementById("workshop_name");
-    const timeSel = document.getElementById("workshop_time");
-    const pill = document.getElementById("pill");
-    const spotsBig = document.getElementById("spotsBig");
-    const spotsHint = document.getElementById("spotsHint");
-    const combined = document.getElementById("workshop_session");
-    const submitBtn = document.getElementById("submitBtn");
+        <div class="msg" id="msg"></div>
+      </form>
 
-    function resetTime(){
-      timeSel.innerHTML = '<option value="">Pick a workshop first</option>';
-      combined.value = "";
-      pill.className = "pill";
-      pill.textContent = "Select workshop + time";
-      spotsBig.textContent = "—";
-      spotsHint.textContent = "Choose a time slot to see spots left. Full sessions are disabled.";
-    }
+      <div class="admin-link">
+        Admin? Go to | للمشرف: <a href="./admin.html">admin.html</a>
+      </div>
+    </section>
+  </main>
 
-    function populateTimes(workshopName){
-      timeSel.innerHTML = '<option value="">Select time slot</option>';
-      const list = sessions.filter(s => s.w === workshopName);
-
-      // Group by day visually in a single select (using optgroup)
-      const byDay = {};
-      list.forEach(s => (byDay[s.d] = byDay[s.d] || []).push(s));
-
-      Object.keys(byDay).forEach(day => {
-        const og = document.createElement("optgroup");
-        og.label = day;
-        byDay[day].forEach(s => {
-          const opt = document.createElement("option");
-          const suffix = s.left > 0 ? `(${s.left} left)` : `(FULL)`;
-          opt.value = s.value;
-          opt.textContent = `${s.labelBase} ${suffix}`;
-          opt.dataset.left = String(s.left);
-          opt.dataset.full = s.left <= 0 ? "1" : "0";
-          opt.dataset.day = s.d;
-          opt.dataset.start = s.s;
-          opt.dataset.end = s.e;
-          opt.disabled = (s.left <= 0); // show FULL but blocked
-          og.appendChild(opt);
-        });
-        timeSel.appendChild(og);
-      });
-
-      // After changing workshop, time selection should reset
-      combined.value = "";
-      pill.className = "pill";
-      pill.textContent = "Pick a time slot";
-      spotsBig.textContent = "—";
-      spotsHint.textContent = "Select a time slot to see spots left.";
-    }
-
-    workshopSel.addEventListener("change", () => {
-      const w = workshopSel.value;
-      if(!w){ resetTime(); return; }
-      populateTimes(w);
-    });
-
-    timeSel.addEventListener("change", () => {
-      const w = workshopSel.value;
-      const selectedOpt = timeSel.options[timeSel.selectedIndex];
-      const val = timeSel.value;
-
-      if(!w || !val){
-        pill.className = "pill";
-        pill.textContent = "Pick a time slot";
-        spotsBig.textContent = "—";
-        spotsHint.textContent = "Select a time slot to see spots left.";
-        combined.value = "";
-        return;
-      }
-
-      const left = parseInt(selectedOpt.dataset.left || "0", 10);
-      const isFull = left <= 0;
-
-      // Compose combined export field
-      const day = selectedOpt.dataset.day || "";
-      const start = selectedOpt.dataset.start || "";
-      const end = selectedOpt.dataset.end || "";
-      const suffix = isFull ? "FULL" : `${left} left`;
-      combined.value = `${w} — ${day} — ${start}–${end} (${suffix})`;
-
-      // UI
-      pill.className = "pill " + (isFull ? "full" : "ok");
-      pill.textContent = isFull ? "FULL" : "AVAILABLE";
-      spotsBig.textContent = isFull ? "0 spots left" : `${left} spots left`;
-      spotsHint.textContent = isFull
-        ? "This time slot is full. Please choose a different time or workshop."
-        : "You’re good — you can submit now.";
-    });
-
-    // Initial
-    resetTime();
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
