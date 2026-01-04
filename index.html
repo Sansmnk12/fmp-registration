@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0b0e" />
   <title>FMP — Workshop | الورشة Registration</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +17,7 @@
         <div class="brand-top">FMP — FUTURE MINERALS PIONEERS</div>
         <h1>Workshop | الورشة Competitor Registration | تسجيل منافسي الورش</h1>
         <p class="sub">
-          Pick a workshop, then pick a time. You’ll see the spots left before you submit. | اختر ورشة ثم اختر الوقت — ستظهر المقاعد المتبقية قبل الإرسال.
+          Pick a workshop, then pick a time. You’ll see the spots left before you submit.<br><span class='ar-sub' dir='rtl'>اختر ورشة ثم اختر الوقت — ستظهر المقاعد المتبقية قبل الإرسال.</span>
         </p>
       </div>
     </header>
@@ -25,33 +26,33 @@
       <!-- Logo goes here (center top) -->
       <div class="logo-wrap">
         <!-- Replace src with your logo file later -->
-        <img class="logo" src="./assets/logo-placeholder.svg" alt="FMP Logo" />
+        <img class="logo" src="./assets/fmp-logo.png" alt="FMP Logo" />
       </div>
 
       <form id="regForm" class="form" autocomplete="on">
         <div class="grid">
           <div class="field">
-            <label>Full Name | الاسم الكامل <span class="req">*</span></label>
+            <label><span class='en'>Full Name</span><span class='ar' dir='rtl'>الاسم الكامل</span> <span class="req">*</span></label>
             <input name="full_name" placeholder="Your full name | اسمك الكامل" required />
           </div>
 
           <div class="field">
-            <label>Email | البريد الإلكتروني <span class="req">*</span></label>
+            <label><span class='en'>Email</span><span class='ar' dir='rtl'>البريد الإلكتروني</span> <span class="req">*</span></label>
             <input name="email" type="email" placeholder="name@email.com | بريدك@example.com" required />
           </div>
 
           <div class="field">
-            <label>Phone (with country code) | رقم الجوال (مع رمز الدولة) <span class="req">*</span></label>
+            <label><span class='en'>Phone (with country code)</span><span class='ar' dir='rtl'>رقم الجوال (مع رمز الدولة)</span> <span class="req">*</span></label>
             <input name="phone" placeholder="+966... | مثال: +9665xxxxxxx" required />
           </div>
 
           <div class="field">
-            <label>Team Name | اسم الفريق <span class="req">*</span></label>
+            <label><span class='en'>Team Name</span><span class='ar' dir='rtl'>اسم الفريق</span> <span class="req">*</span></label>
             <input name="team_name" placeholder="Team name | اسم الفريق" required />
           </div>
 
           <div class="field">
-            <label>Track Name | المسار <span class="req">*</span></label>
+            <label><span class='en'>Track Name</span><span class='ar' dir='rtl'>المسار</span> <span class="req">*</span></label>
             <select name="track_name" required>
               <option value="" selected disabled>Select track | اختر المسار</option>
               <option>Exploration</option>
@@ -61,14 +62,14 @@
           </div>
 
           <div class="field">
-            <label>Workshop | الورشة <span class="req">*</span></label>
+            <label><span class='en'>Workshop</span><span class='ar' dir='rtl'>الورشة</span> <span class="req">*</span></label>
             <select id="workshopSelect" name="workshop_id" required>
               <option value="" selected disabled>Select workshop | اختر الورشة</option>
             </select>
           </div>
 
           <div class="field">
-            <label>Time Slot | الوقت <span class="req">*</span></label>
+            <label><span class='en'>Time Slot</span><span class='ar' dir='rtl'>الوقت</span> <span class="req">*</span></label>
             <select id="sessionSelect" name="session_id" required disabled>
               <option value="" selected disabled>Pick a workshop first | اختر الورشة أولاً</option>
             </select>
@@ -77,13 +78,13 @@
 
         <div class="availability" aria-live="polite">
           <div class="availability-head">
-            <h2>Availability | التوفر</h2>
+            <h2><span class='en'>Availability</span><span class='ar' dir='rtl'>التوفر</span></h2>
             <span id="statusPill" class="pill pill-muted">Select workshop | اختر الورشة + time</span>
           </div>
 
           <div class="availability-body">
             <div class="big" id="spotsLeft">—</div>
-            <div class="small" id="spotsNote">Choose a time slot to see spots left. Full sessions are disabled. | اختر الوقت لعرض المقاعد المتبقية. الجلسات الممتلئة ستكون غير متاحة.</div>
+            <div class="small" id="spotsNote">Choose a time slot to see spots left. Full sessions are disabled.<br><span class='ar-sub' dir='rtl'>اختر الوقت لعرض المقاعد المتبقية. الجلسات الممتلئة ستكون غير متاحة.</span></div>
           </div>
         </div>
 
@@ -97,7 +98,7 @@
       </form>
 
       <div class="admin-link">
-        Admin? Go to | للمشرف: <a href="./admin.html">admin.html</a>
+        Admin? Go to <span class='ar-inline' dir='rtl'>للمشرف:</span> <a href="./admin.html">admin.html</a>
       </div>
     </section>
   </main>
